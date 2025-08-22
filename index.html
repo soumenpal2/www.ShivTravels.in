@@ -42,126 +42,140 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 
 <style>
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 10px;
+  }
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 20px;
-    }
+  .popup {
+    background: #fff;
+    max-width: 400px; 
+    width: 100%;
+    padding: 15px; 
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+  }
 
+  .popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: red;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  .contain{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .contain img {
+    width: 100%; 
+    max-height: 100%;
+    object-fit: fill; 
+   
+  }
+
+  .popup h2 {
+    margin: 10px 0;
+    color: #FF9900;
+    font-size: 22px;
+    line-height: 1.5em;
+  }
+
+  .popup ul {
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+    text-align: left;
+    padding: 0;
+    margin: 10px 0 18px;
+    list-style: none;
+  }
+
+  .popup ul li {
+    margin: 3px 0;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 1.4em;
+    position: relative;
+    word-wrap: break-word; 
+  }
+
+  .popup ul li::before {
+    content: "✔";
+    color: green;
+    position: absolute;
+    left: 0;
+  }
+
+  .call-btn {
+    display:block;
+    background: #FF9900;
+    color: #000000;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .call-btn:hover {
+    background: #050505;
+    color:#FF9900;
+  }
+
+  @media (max-width: 480px) {
     .popup {
-      background: #fff;
-      max-width: 600px;
-      width: 100%;
-      padding: 20px;
-      border-radius: 12px;
-      position: relative;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      text-align: center;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .popup .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: red;
-      color: #fff;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      line-height: 28px;
-      text-align: center;
-    }
-
-    .popup img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      max-width: 90%; 
+      padding: 12px;
     }
 
     .popup h2 {
-      margin: 10px 0;
-      color: #333;
-      font-size: 20px;
+      font-size: 16px;
     }
 
-    .popup ul {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 20px;
-      text-align: left;
-      padding: 0;
-      margin: 10px 0 20px; 
-      list-style: none;
+    .popup img {
+      height: 100px;
     }
 
     .popup ul li {
-      margin: 4px 0;
-      padding-left: 18px;
-      position: relative;
-      position: relative;
-      font-size: 13.5px; 
-      line-height: 1.3em;  
-      white-space: nowrap; 
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 13px;
     }
-
-    .popup ul li::before {
-      content: "✔";
-      color: green;
-      position: absolute;
-      left: 0;
-    }
-
-    .call-btn {
-      display: inline-block;
-      background: #FF9900;
-      color: #000000;
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .call-btn:hover {
-      background: #050505;
-      color:#FF9900;
-    }
-
-    @media (max-width: 600px) {
-      .popup ul {
-        grid-template-columns: 1fr;
-      }
-      .popup h2 {
-        font-size: 18px;
-      }
-      .popup ul li {
-          white-space: normal; 
   }
-    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
 </style>
 
 
@@ -1109,19 +1123,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="overlay" id="popupOverlay">
     <div class="popup" id="popupCard">
       <button class="close-btn" id="closePopup">&times;</button>
-      <img src="assets/img/Urbania2.jpg" alt="Cab Image">
+      <div class="contain">
+       <img src="assets/img/(4160 x 3120 px).png" alt="Cab Image">
+      </div>
       <h2>Book Your Cab Instantly – Safe, Affordable & On-Time!</h2>
       <ul>
-        <li>24/7 Cab Service – Anytime, Anywhere</li>
-        <li>One-Way & Round Trip Rides</li>
-        <li>Lowest Price Guaranteed</li>
-        <li>Airport Pickup & Drop – On-Time</li>
-        <li>Luxury, Sedan & SUV Options</li>
-        <li>Verified & Professional Drivers</li>
+        <li>One-Way & Round Trips Available</li>
+        <li>Professional & Verified Drivers</li>
+        <li>Trusted by 1 Lac+ Customers</li>
+        <li>24/7 Taxi Booking Available</li>
+        <li>Luxury Tempo Available</li>
         <li>Clean, Sanitized Cars Always</li>
-        <li>Trusted by 1 Lac+ Happy Riders</li>
-        <li>Pay Online or Cash After Ride</li>
-        <li>Instant Booking Confirmation</li>
       </ul>
 
       <!-- Call Now Button -->
