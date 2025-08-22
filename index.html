@@ -85,20 +85,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-align: center;
   }
 
-  .contain{
+  .popup .img-container {
     width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
+    height: 170px; 
     border-radius: 8px;
-    margin-bottom: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
   }
-  .contain img {
-  max-height: 100%;  
-  width: auto;    
-  object-fit: contain;
+
+  .popup .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
   }
 
   .popup h2 {
@@ -196,7 +195,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .call-float img:hover {
   transform: scale(1.1); 
 }
+@media (max-width: 480px) {
+  .call-float img {
+    width: 45px;
+    height: 45px;
+  }
+  .call-float {
+    bottom: 15px;
+    left: 15px;
+  }
+}
 
+/* 📲 tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .call-float img {
+    width: 55px;
+    height: 55px;
+  }
+  .call-float {
+    bottom: 18px;
+    left: 18px;
+  }
+}
+
+/* 💻 large screens */
+@media (min-width: 1200px) {
+  .call-float img {
+    width: 70px;
+    height: 70px;
+  }
+}
 
 </style>
 
@@ -1145,9 +1173,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="overlay" id="popupOverlay">
     <div class="popup" id="popupCard">
       <button class="close-btn" id="closePopup">&times;</button>
-      <div class="contain">
-       <img src="assets/img/(4160 x 3120 px).png" alt="Cab Image">
-      </div>
+       <div class="img-container">
+      <img src="assets/img/(4160 x 3120 px).png" alt="Cab Image">
+    </div>
       <h2>Book Your Cab Instantly – Safe, Affordable & On-Time!</h2>
       <ul>
         <li>One-Way & Round Trips Available</li>
