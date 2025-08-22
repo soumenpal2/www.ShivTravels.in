@@ -85,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-align: center;
   }
 
-  .popup .img-container {
+  /* .popup .img-container {
     width: 100%;
     height: 250px; 
     border-radius: 8px;
@@ -98,8 +98,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     height: 100%;
     object-fit: cover; 
     display: block;
-  }
+  } */
 
+
+.popup .img-container {
+  width: 100%;
+  height: 280px; 
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+
+  background: url("assets/img/(4160 x 3120 px).png") no-repeat center center;
+  background-size: cover; 
+}
+
+@media (max-width: 480px) {
+  .popup .img-container {
+    height: 190px;  
+  }
+}
   .popup h2 {
     margin: 10px 0;
     color: #FF9900;
@@ -1173,9 +1190,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="overlay" id="popupOverlay">
     <div class="popup" id="popupCard">
       <button class="close-btn" id="closePopup">&times;</button>
-       <div class="img-container">
+       <!-- <div class="img-container">
       <img src="assets/img/(4160 x 3120 px).png" alt="Cab Image">
-    </div>
+    </div> -->
+    <div class="img-container"></div>
       <h2>Book Your Cab Instantly – Safe, Affordable & On-Time!</h2>
       <ul>
         <li>One-Way & Round Trips Available</li>
