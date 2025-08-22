@@ -109,7 +109,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   margin-bottom: 12px;
 
   background: url("assets/img/(4160 x 3120 px).png") no-repeat center center;
-  background-size: cover; 
+ background-size: cover; 
+  background-clip: padding-box;
 }
 
 @media (max-width: 480px) {
@@ -196,26 +197,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .call-float {
   position: fixed;
-  bottom: 20px;         
-  left: 20px;           
+  bottom: 20px;
+  left: 20px;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  text-decoration: none; 
 }
 
 .call-float img {
-  width: 60px;         
-  height: 60px;
-  border-radius: 50%;  
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   transition: transform 0.2s;
 }
 
 .call-float img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
+
+.call-text {
+  background: #343434;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px!important;
+  border-radius: 1px;
+  white-space: nowrap; 
+}
+
+/* 📱 Small screens */
 @media (max-width: 480px) {
   .call-float img {
     width: 45px;
     height: 45px;
+  }
+  .call-text {
+    font-size: 12px;
+    padding: 4px 8px;
   }
   .call-float {
     bottom: 15px;
@@ -223,11 +244,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 }
 
-/* 📲 tablets */
+/* 📲 Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .call-float img {
     width: 55px;
     height: 55px;
+  }
+  .call-text {
+    font-size: 13px;
+    padding: 5px 10px;
   }
   .call-float {
     bottom: 18px;
@@ -235,13 +260,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 }
 
-/* 💻 large screens */
+/* 💻 Large screens */
 @media (min-width: 1200px) {
   .call-float img {
     width: 70px;
     height: 70px;
   }
+  .call-text {
+    font-size: 15px;
+    padding: 7px 14px;
+  }
 }
+
 
 </style>
 
@@ -1216,6 +1246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Floating Call Button -->
 <a href="tel:+919558212200" class="call-float">
   <img src="assets/img/phone-call.png" alt="Call Now" />
+  <span class="call-text">Call Now </span>
 </a>
 
 
